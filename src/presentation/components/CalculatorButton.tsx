@@ -6,7 +6,7 @@ type Props = {
   label: string;
   color?: string;
   doubleSize?: boolean;
-  blackText?: boolean;
+  colorText?: string;
   onPress: () => void;
 };
 
@@ -14,7 +14,7 @@ const CalculatorButton: React.FC<Props> = ({
   label,
   color = colors.darkGray,
   doubleSize = false,
-  blackText = false,
+  colorText = 'white',
   onPress,
 }) => {
   return (
@@ -27,8 +27,10 @@ const CalculatorButton: React.FC<Props> = ({
       })}
       onPress={onPress}>
       <Text
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{...styles.buttonText, color: blackText ? 'black' : 'white'}}>
+        style={{
+          ...styles.buttonText,
+          color: colorText,
+        }}>
         {label}
       </Text>
     </Pressable>

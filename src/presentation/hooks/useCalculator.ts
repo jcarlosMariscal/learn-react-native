@@ -10,7 +10,7 @@ enum Operator {
 export const useCalculator = () => {
   const [formula, setFormula] = useState('');
 
-  const [number, setNumber] = useState('0');
+  const [number, setNumber] = useState('');
   const [prevNumber, setPrevNumber] = useState('0');
 
   const lastOperation = useRef<Operator>();
@@ -32,7 +32,7 @@ export const useCalculator = () => {
   }, [formula]);
 
   const clean = () => {
-    setNumber('0');
+    setNumber('');
     setPrevNumber('0');
     lastOperation.current = undefined;
     setFormula('');
@@ -52,7 +52,7 @@ export const useCalculator = () => {
       return setNumber(currentSign + temporalNumber.slice(0, -1)); //
     }
 
-    setNumber('0');
+    setNumber('');
   };
 
   const toggleSign = () => {
@@ -104,7 +104,7 @@ export const useCalculator = () => {
       setPrevNumber(number);
     }
 
-    setNumber('0');
+    setNumber('');
   };
 
   const divideOperation = () => {

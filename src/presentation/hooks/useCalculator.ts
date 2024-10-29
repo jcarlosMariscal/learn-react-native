@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 
-enum Operator {
+export enum Operator {
   add = '+',
   subtract = '-',
   multiply = 'x',
@@ -108,28 +108,9 @@ export const useCalculator = () => {
     setNumber('');
   };
 
-  const divideOperation = () => {
+  const calculatorOperation = (operation: Operator) => {
     setLastNumber();
-    lastOperation.current = Operator.divide;
-  };
-
-  const multiplyOperation = () => {
-    setLastNumber();
-    lastOperation.current = Operator.multiply;
-  };
-
-  const subtractOperation = () => {
-    setLastNumber();
-    lastOperation.current = Operator.subtract;
-  };
-
-  const addOperation = () => {
-    setLastNumber();
-    lastOperation.current = Operator.add;
-  };
-  const percentOperation = () => {
-    setLastNumber();
-    lastOperation.current = Operator.percent;
+    lastOperation.current = operation;
   };
 
   const calculateResult = () => {
@@ -144,7 +125,7 @@ export const useCalculator = () => {
     const [firstValue, operation, secondValue] = formula.split(' ');
 
     const num1 = Number(firstValue);
-    const num2 = Number(secondValue); //NaN
+    const num2 = Number(secondValue);
 
     if (isNaN(num2)) {
       return num1;
@@ -153,39 +134,29 @@ export const useCalculator = () => {
     switch (operation) {
       case Operator.add:
         return num1 + num2;
-
       case Operator.subtract:
         return num1 - num2;
-
       case Operator.multiply:
         return num1 * num2;
-
       case Operator.divide:
         return num1 / num2;
       case Operator.percent:
         return (num1 * num2) / 100;
-
       default:
         throw new Error('Operation not implemented');
     }
   };
 
   return {
-    // Properties
     number,
     prevNumber,
     formula,
-
     // Methods
     buildNumber,
     toggleSign,
     clean,
     deleteOperation,
-    divideOperation,
-    multiplyOperation,
-    subtractOperation,
-    addOperation,
-    percentOperation,
+    calculatorOperation,
     calculateResult,
   };
 };

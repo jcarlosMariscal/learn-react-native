@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {colors, styles} from '../../config/theme/app-theme';
 import CalculatorButton from '../components/CalculatorButton';
-import useCalculator from '../hooks/useCalculator';
+import useCalculator, {Operator} from '../hooks/useCalculator';
 
 const CalculatorScreen = () => {
   const {
@@ -12,11 +12,7 @@ const CalculatorScreen = () => {
     toggleSign,
     clean,
     deleteOperation,
-    addOperation,
-    divideOperation,
-    multiplyOperation,
-    subtractOperation,
-    percentOperation,
+    calculatorOperation,
     calculateResult,
   } = useCalculator();
   return (
@@ -38,7 +34,7 @@ const CalculatorScreen = () => {
       <View style={styles.row}>
         <CalculatorButton onPress={clean} label="C" colorText={colors.red} />
         <CalculatorButton
-          onPress={percentOperation}
+          onPress={() => calculatorOperation(Operator.percent)}
           label="%"
           colorText={colors.green}
         />
@@ -48,7 +44,7 @@ const CalculatorScreen = () => {
           colorText={colors.green}
         />
         <CalculatorButton
-          onPress={divideOperation}
+          onPress={() => calculatorOperation(Operator.divide)}
           label="÷"
           colorText={colors.green}
         />
@@ -58,7 +54,7 @@ const CalculatorScreen = () => {
         <CalculatorButton onPress={() => buildNumber('8')} label="8" />
         <CalculatorButton onPress={() => buildNumber('9')} label="9" />
         <CalculatorButton
-          onPress={multiplyOperation}
+          onPress={() => calculatorOperation(Operator.multiply)}
           label="×"
           colorText={colors.green}
         />
@@ -68,7 +64,7 @@ const CalculatorScreen = () => {
         <CalculatorButton onPress={() => buildNumber('5')} label="5" />
         <CalculatorButton onPress={() => buildNumber('6')} label="6" />
         <CalculatorButton
-          onPress={subtractOperation}
+          onPress={() => calculatorOperation(Operator.subtract)}
           label="-"
           colorText={colors.green}
         />
@@ -78,7 +74,7 @@ const CalculatorScreen = () => {
         <CalculatorButton onPress={() => buildNumber('2')} label="2" />
         <CalculatorButton onPress={() => buildNumber('3')} label="3" />
         <CalculatorButton
-          onPress={addOperation}
+          onPress={() => calculatorOperation(Operator.add)}
           label="+"
           colorText={colors.green}
         />

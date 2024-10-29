@@ -5,6 +5,7 @@ enum Operator {
   subtract = '-',
   multiply = 'x',
   divide = '÷',
+  percent = '%',
 }
 
 export const useCalculator = () => {
@@ -126,6 +127,10 @@ export const useCalculator = () => {
     setLastNumber();
     lastOperation.current = Operator.add;
   };
+  const percentOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.percent;
+  };
 
   const calculateResult = () => {
     const result = calculateSubResult();
@@ -157,6 +162,8 @@ export const useCalculator = () => {
 
       case Operator.divide:
         return num1 / num2;
+      case Operator.percent:
+        return (num1 * num2) / 100;
 
       default:
         throw new Error('Operation not implemented');
@@ -178,6 +185,7 @@ export const useCalculator = () => {
     multiplyOperation,
     subtractOperation,
     addOperation,
+    percentOperation,
     calculateResult,
   };
 };

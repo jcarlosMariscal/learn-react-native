@@ -6,7 +6,6 @@ import useCalculator from '../hooks/useCalculator';
 
 const CalculatorScreen = () => {
   const {
-    number,
     formula,
     prevNumber,
     buildNumber,
@@ -17,6 +16,7 @@ const CalculatorScreen = () => {
     divideOperation,
     multiplyOperation,
     subtractOperation,
+    percentOperation,
     calculateResult,
   } = useCalculator();
   return (
@@ -32,13 +32,13 @@ const CalculatorScreen = () => {
         />
 
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.subResult}>
-          {prevNumber === '0' || number === prevNumber ? '' : prevNumber}
+          {prevNumber === '0' || formula === prevNumber ? '' : prevNumber}
         </Text>
       </View>
       <View style={styles.row}>
         <CalculatorButton onPress={clean} label="C" colorText={colors.red} />
         <CalculatorButton
-          onPress={toggleSign}
+          onPress={percentOperation}
           label="%"
           colorText={colors.green}
         />

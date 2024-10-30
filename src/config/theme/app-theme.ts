@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 export const colors = {
-  darkGray: '#171717',
-  green: '#328813',
-  red: '#9a4f4c',
-  textPrimary: 'white',
-  testSecondary: '#666666',
-  background: '#080808',
+  darkGray: '#f7f6f7',
+  green: '#47a311',
+  red: '#c54642',
+  textPrimary: '#3f3e3f',
+  textSecondary: '#666666',
+  background: '#fdfdfc',
 };
 
 export const styles = StyleSheet.create({
@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     justifyContent: 'flex-end',
+    backgroundColor: colors.background,
   },
   resultContainer: {paddingHorizontal: 30, paddingBottom: 20},
   mainResult: {
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
   },
   subResult: {
-    color: colors.testSecondary,
+    color: colors.textSecondary,
     fontSize: 25,
     textAlign: 'right',
     fontWeight: '300',
@@ -51,7 +52,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     fontSize: 24,
-    color: 'white',
+    color: colors.textPrimary,
     fontWeight: 500,
   },
 });

@@ -14,7 +14,7 @@ const CalculatorButton: React.FC<Props> = ({
   label,
   color = colors.darkGray,
   doubleSize = false,
-  colorText = 'white',
+  colorText = colors.textPrimary,
   onPress,
 }) => {
   return (

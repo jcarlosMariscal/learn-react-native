@@ -87,6 +87,7 @@ const CalculatorScreen = () => {
           onPress={calculateResult}
           label="="
           color={colors.green}
+          colorText={colors.background}
         />
       </View>
     </View>
